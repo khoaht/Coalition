@@ -57,16 +57,32 @@
   <ItemGroup>
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Criterias\Criteria.cs" />
+    <Compile Include="Criterias\CompanyCriteria.cs" />
+    <Compile Include="Criterias\UserCriteria.cs" />
+    <Compile Include="Criterias\CardCriteria.cs" />
+    <Compile Include="Criterias\ClientCriteria.cs" />
     <Compile Include="Criterias\TransactionCriteria.cs" />
     <Compile Include="IDatabaseContext.cs" />
     <Compile Include="Extentions\EnumerableExtensions.cs" />
     <Compile Include="DatabaseContext.cs" />
+    <Compile Include="Migrations\201411280545271_Update.cs" />
+    <Compile Include="Migrations\201411280545271_Update.Designer.cs">
+      <DependentUpon>201411280545271_Update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Services\Interfaces\IService.cs" />
+    <Compile Include="Services\Interfaces\ICardService.cs" />
+    <Compile Include="Services\Interfaces\IClientService.cs" />
+    <Compile Include="Services\Interfaces\ICompanyService.cs" />
+    <Compile Include="Services\Interfaces\IUserService.cs" />
     <Compile Include="Services\Interfaces\ITransactionService.cs" />
+    <Compile Include="Services\CarService.cs" />
+    <Compile Include="Services\ClientService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\CompanyService.cs" />
     <Compile Include="Services\TransactionService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +94,11 @@
       <Project>{5e884344-98bb-4ecb-ab24-7b1616ec2cab}</Project>
       <Name>CL.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201411280545271_Update.resx">
+      <DependentUpon>201411280545271_Update.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

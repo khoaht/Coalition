@@ -61,8 +61,7 @@ namespace CL.Infrastructure
         {
             try
             {
-                DbSet.Add(entity);
-                Commit();
+                DbSet.Add(entity);                
                 _context.Entry(entity).GetDatabaseValues();
             }
             catch (DbEntityValidationException)

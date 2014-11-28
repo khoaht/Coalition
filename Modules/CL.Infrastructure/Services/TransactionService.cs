@@ -36,22 +36,30 @@ namespace CL.Infrastructure.Services
 
         public Transaction Get(Guid Id)
         {
-            throw new NotImplementedException();
+            return transactionRepository.Get.FirstOrDefault(t => t.Id.Equals(Id));
         }
 
         public Transaction Add(Transaction transaction)
         {
-            throw new NotImplementedException();
+            var result = transactionRepository.Add(transaction);
+            transactionRepository.Commit();
+            return result;
         }
 
         public Transaction Update(Transaction transaction)
         {
-            throw new NotImplementedException();
+            return transactionRepository.Update(transaction);
         }
 
         public bool Delete(Guid Id)
         {
-            throw new NotImplementedException();
+            var delete = Get(Id);
+            if (delete != null)
+            {
+                transactionRepository.Remove(delete);
+                return true;
+            }
+            return false;
         }
     }
 }

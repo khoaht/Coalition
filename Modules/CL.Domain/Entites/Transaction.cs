@@ -12,7 +12,7 @@ namespace Domain.Entity
     public class Transaction : IEntity
     {
         [Key]
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
         public DateTime DateTime { get; set; }
 

@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CL.Infrastructure
+namespace CL.Infrastructure.Criterias
 {
     /// <summary>
-    /// Base Criteria
+    /// Criteria Class
     /// </summary>
-    public abstract class Criteria
+    public class CompanyCriteria : Criteria
     {
+        public string Name { get; set; }
     }
 }
