@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Interfaces;
 
-namespace Domain.Model
+namespace Domain.Entity
 {
-    public class Client
+    public class Client : IEntity
     {
         [Key]
         public Guid Id { get; set; }

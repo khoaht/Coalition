@@ -5,17 +5,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Interfaces;
 
-namespace Domain.Model
+namespace Domain.Entity
 {
-    public class Transaction
+    public class Transaction : IEntity
     {
         [Key]
         public Guid Id { get; set; }
 
         public DateTime DateTime { get; set; }
 
-        public string OriginalPoints { get; set; }
+        public int OriginalPoints { get; set; }
+
+        public int RemmainingPoints { get; set; }
 
         public string SourceCard { get; set; }
 
@@ -25,13 +28,13 @@ namespace Domain.Model
 
         public Guid CompanyId { get; set; }
 
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
 
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
 
         [ForeignKey("CompanyId")]
-        public virtual Company Company { get; set; }
+        public Company Company { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
 

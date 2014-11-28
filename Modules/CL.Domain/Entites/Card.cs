@@ -5,20 +5,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Interfaces;
 
-namespace Domain.Model
+namespace Domain.Entity
 {
-    public class Card
+    public class Card : IEntity
     {
         [Key]
         public Guid Id { get; set; }
 
         public string CardNumber { get; set; }
 
-        public Guid ClientID { get; set; }
+        public Guid ClientId { get; set; }
 
         [ForeignKey("ClientId")]
-        public virtual Client Client { get; set; }
+        public Client Client { get; set; }
     }
 }
 
