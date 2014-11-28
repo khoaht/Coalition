@@ -6,19 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Domain.Model
 {
-    public class Card
+    public class User
     {
         [Key]
         public Guid Id { get; set; }
 
-        public string CardNumber { get; set; }
+        public Guid CompanyId { get; set; }
 
-        public Guid ClientID { get; set; }
+        [ForeignKey("CompanyId")]
+        public Company Company { get; set; }
 
-        [ForeignKey("ClientId")]
-        public virtual Client Client { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }
-
