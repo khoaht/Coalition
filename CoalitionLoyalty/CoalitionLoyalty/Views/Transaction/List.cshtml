@@ -1,0 +1,24 @@
+﻿<h2>Transactions</h2>
+<button type="button" class="btn btn-primary btn-sm pull-right" ng-click="addPoint()">
+    <span class="glyphicon glyphicon-plus"></span>Create new
+</button>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Date Time</th>
+            <th>Original Points</th>
+            <th>Remaining Points</th>
+            <th>Source Card</th>
+            <th>Destination Card</th>
+        </tr>
+    </thead>
+    <tr ng-data="transaction in transactions">
+        <td ng-model="transaction.Id" />
+        <td ng-model="transaction.DateTime" />
+        <td ng-model="transaction.OriginalPoints" />
+        <td ng-model="transaction.RemainingPoints" />
+        <td ng-model="transaction.SourceCard"/>
+        <td ng-model="transaction.DestinationCard" />
+    </tr>
+</table>

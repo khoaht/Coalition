@@ -1,0 +1,59 @@
+﻿
+<form role="form" id="frmAddPoint">
+    <div class=" form-group">
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-9">
+                    <label for="cardOrMail">Card or mail</label>
+                    <input type="text" class="form-control" id="txtCardOrMail" placeholder="Enter card or mail">
+                </div>
+
+                <div class="col-md-3">
+                    <label for="cards">Card</label>
+                    <select ng-model="CardId" ng-options="card.CardNumber for card in cards"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-9">
+                    <label for="ticket">Ticket#</label>
+                    <input type="text" class="form-control" id="txtTicket" placeholder="Enter ticket">
+
+                </div>
+
+                <div class="col-md-3">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-9">
+                    <label for="saleAmount">Sale amount</label>
+                    <input type="text" class="form-control" id="txtSaleAmount">
+                </div>
+
+                <div class="col-md-3">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-9">
+                    <label for="saleAmount">Points</label>
+                    <input type="text" class="form-control" id="txtPoint">
+                </div>
+
+                <div class="col-md-3">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-default">Go</button>
+</form>

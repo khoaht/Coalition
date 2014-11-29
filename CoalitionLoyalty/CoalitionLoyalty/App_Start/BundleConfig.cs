@@ -27,6 +27,23 @@ namespace CoalitionLoyalty
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+
+            bundles.Add(new ScriptBundle("~/bundles/angularjs").Include(
+                        "~/Scripts/angular.js",
+                        "~/Scripts/angular-route.js",
+                        "~/Scripts/angular-scenario.js",
+                         "~/Scripts/ui-bootstrap-tpls-0.10.0.min.js"
+                        ));
+
+            bundles.Add(new ScriptBundle("~/bundles/ngApp").Include(
+                "~/app/ng-app.js"
+                , "~/app/servies/globalService.js"
+                , "~/app/controllers/homeController.js"
+                , "~/app/controllers/transactionController.js"
+                , "~/app/controllers/addTransactionController.js"
+                           ));
+            //End Directives
+
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
             BundleTable.EnableOptimizations = true;

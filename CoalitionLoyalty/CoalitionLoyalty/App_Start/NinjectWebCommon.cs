@@ -63,18 +63,12 @@ namespace CoalitionLoyalty.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             #region Service
-            kernel.Bind<ITransactionService>().To<TransactionService>()
-                .InSingletonScope();
-            #endregion
+            kernel.Bind<ITransactionService>().To<TransactionService>();
+            kernel.Bind<ICardService>().To<CardService>();
+            kernel.Bind<IClientService>().To<ClientService>();
+            kernel.Bind<ICompanyService>().To<CompanyService>();
+            kernel.Bind<IUserService>().To<UserService>();
 
-            #region Service
-            kernel.Bind<ITransactionService>().To<TransactionService>()
-                .InSingletonScope();
-            #endregion
-
-            #region Service
-            kernel.Bind<ITransactionService>().To<TransactionService>()
-                .InSingletonScope();
             #endregion
 
             #region Repositories

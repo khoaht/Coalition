@@ -22,11 +22,12 @@ namespace CL.Infrastructure.Services
             Func<Client, bool> exp = null;
             exp = t => (!string.IsNullOrEmpty(criteria.FirstName) || t.FirstName.Contains(criteria.FirstName))
                         && (!string.IsNullOrEmpty(criteria.LastName) || t.LastName.Contains(criteria.LastName))
-                        && (!string.IsNullOrEmpty(criteria.SurName) || t.SurName.Contains(criteria.SurName));
+                        && (!string.IsNullOrEmpty(criteria.SurName) || t.SurName.Contains(criteria.SurName))
+                        && (!string.IsNullOrEmpty(criteria.Email) || t.Email.Contains(criteria.Email));
 
             var result = clientRepository.Get
                         .Where(exp)
-                        .OrderBy(t => t.SurName)
+                        .OrderBy(t => t.FirstName)
                         .ToList();
 
             return result;

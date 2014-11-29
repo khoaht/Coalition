@@ -26,8 +26,11 @@ namespace CL.Infrastructure
 
         public IDbSet<Card> Cards { get; set; }
 
-        
-        
+        public static DatabaseContext Create()
+        {
+            return new DatabaseContext();
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Remove unused conventions

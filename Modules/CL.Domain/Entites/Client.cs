@@ -19,6 +19,8 @@ namespace Domain.Entity
 
         public string SurName { get; set; }
 
+        public string Email { get; set; }
+
         public virtual ICollection<Card> Cards { get; set; }
     }
 }
