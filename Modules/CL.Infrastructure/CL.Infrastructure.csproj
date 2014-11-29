@@ -65,13 +65,13 @@
     <Compile Include="IDatabaseContext.cs" />
     <Compile Include="Extentions\EnumerableExtensions.cs" />
     <Compile Include="DatabaseContext.cs" />
-    <Compile Include="Migrations\201411280545271_Update.cs" />
-    <Compile Include="Migrations\201411280545271_Update.Designer.cs">
-      <DependentUpon>201411280545271_Update.cs</DependentUpon>
+    <Compile Include="Migrations\201411291755314_seek.cs" />
+    <Compile Include="Migrations\201411291755314_seek.Designer.cs">
+      <DependentUpon>201411291755314_seek.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201411291744211_Update1.cs" />
-    <Compile Include="Migrations\201411291744211_Update1.Designer.cs">
-      <DependentUpon>201411291744211_Update1.cs</DependentUpon>
+    <Compile Include="Migrations\201411291756274_seek1.cs" />
+    <Compile Include="Migrations\201411291756274_seek1.Designer.cs">
+      <DependentUpon>201411291756274_seek1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,7 +82,7 @@
     <Compile Include="Services\Interfaces\IClientService.cs" />
     <Compile Include="Services\Interfaces\ICompanyService.cs" />
     <Compile Include="Services\Interfaces\IUserService.cs" />
-    <Compile Include="Services\Interfaces\ITransactionService.cs" />
+    <Compile Include="Services\ITransactionService.cs" />
     <Compile Include="Services\CarService.cs" />
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Services\UserService.cs" />
@@ -100,11 +100,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201411280545271_Update.resx">
-      <DependentUpon>201411280545271_Update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201411291755314_seek.resx">
+      <DependentUpon>201411291755314_seek.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411291744211_Update1.resx">
-      <DependentUpon>201411291744211_Update1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201411291756274_seek1.resx">
+      <DependentUpon>201411291756274_seek1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

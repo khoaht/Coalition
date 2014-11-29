@@ -22,9 +22,10 @@ namespace CL.Infrastructure.Services
         public IList<Transaction> Search(Criterias.TransactionCriteria criteria)
         {
             Func<Transaction, bool> exp = null;
-            exp = t => (criteria.CompanyId == null || criteria.CompanyId.Equals(t.CompanyId))
-                       && (criteria.DateTime == null || criteria.DateTime.Equals(t.DateTime))
-                       && (!string.IsNullOrEmpty(criteria.DestinationCard) || criteria.DestinationCard.Equals(t.DestinationCard));
+            exp = t => (criteria.CompanyId == null || t.CompanyId.Equals(criteria.CompanyId))
+                       && (criteria.DateTime == null || t.DateTime.Equals(criteria.DateTime))
+                       && (criteria.SourceCard == null || t.SourceCard.Equals(t.SourceCard))
+                       && (criteria.DestinationCard == null || t.DestinationCard.Equals(criteria.DestinationCard));
 
             var result = transactionRepository.Get
                         .Where(exp)

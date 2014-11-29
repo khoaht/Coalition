@@ -22,7 +22,7 @@ namespace CL.Infrastructure.Services
         public IList<Company> Search(Criterias.CompanyCriteria criteria)
         {
             Func<Company, bool> exp = null;
-            exp = t => (!string.IsNullOrEmpty(criteria.Name) || t.Name.Equals(criteria.Name));
+            exp = t => (string.IsNullOrEmpty(criteria.Name) || t.Name.Equals(criteria.Name));
 
             var result = companyRepository.Get
                         .Where(exp)

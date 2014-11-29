@@ -21,7 +21,7 @@ namespace CL.Infrastructure.Services
         {
             Func<Card, bool> exp = null;
             exp = t => (criteria.ClientId == null || t.ClientId.Equals(criteria.ClientId))
-                       && (!string.IsNullOrEmpty(criteria.CardNumber) || t.CardNumber.Contains(criteria.CardNumber));
+                       && (string.IsNullOrEmpty(criteria.CardNumber) || t.CardNumber.Contains(criteria.CardNumber));
 
             var result = cardRepository.Get
                         .Where(exp)

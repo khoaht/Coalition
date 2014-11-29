@@ -13,20 +13,25 @@ appControllers.controller('AddTransactionController', ['$scope', '$http', '$loca
   function ($scope, $http, $location, $q) {
 
       //Get Cards
-      var qdefer = $q.defer();
+      $scope.cards = [];
+
       $http({
           method: 'GET',
           url: '/Transaction/GetCards',
           async: false,
       }).success(function (data, status, headers, config) {
-          qdefer.resolve(data);
+          $scope.cards = data;
       });
 
-      $scope.cards = qdefer.promise;
       //ENd
 
       $scope.GO = function () {
-          $location.path("/Transaction/Add");
+          var transactionModel = {
+              OriginalPoints: $scope.CaculatedPoints,
+              RemmainingPoints: $scope.CaculatedPoints,
+              SourceCard: null,
+              DestinationCard: $scope.CardId
+          };
       }
   }]);
 

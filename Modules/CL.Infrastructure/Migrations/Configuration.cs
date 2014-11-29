@@ -1,6 +1,7 @@
 namespace CL.Infrastructure.Migrations
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -63,6 +64,26 @@ namespace CL.Infrastructure.Migrations
                 }
 
 
+            }
+
+            var client = new Client()
+          {
+              Id = Guid.NewGuid(),
+              FirstName = "Khoa",
+              LastName = "Ho",
+              SurName = "Mr",
+              Email = "hotankhoa.qn@gmail.com"
+
+          };
+            client.Cards = new List<Card>();
+            client.Cards.Add(new Card() { Id = Guid.NewGuid(), CardNumber = "6565447" });
+            client.Cards.Add(new Card() { Id = Guid.NewGuid(), CardNumber = "7797979" });
+            client.Cards.Add(new Card() { Id = Guid.NewGuid(), CardNumber = "8646511" });
+            var existedClient = context.Clients.Any(t => t.LastName.Equals(client.LastName));
+            //if (existed == false)
+            {
+                context.Clients.Add(client);
+                context.SaveChanges();
             }
 
 

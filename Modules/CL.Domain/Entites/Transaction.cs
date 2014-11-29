@@ -20,11 +20,11 @@ namespace Domain.Entity
 
         public int RemmainingPoints { get; set; }
 
-        public string SourceCard { get; set; }
+        public Guid? SourceCard { get; set; }
 
-        public string DestinationCard { get; set; }
+        public Guid? DestinationCard { get; set; }
 
-        public string SourceTransaction { get; set; }
+        public Guid? SourceTransaction { get; set; }
 
         public Guid CompanyId { get; set; }
 
