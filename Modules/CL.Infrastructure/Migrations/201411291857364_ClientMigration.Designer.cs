@@ -7,13 +7,13 @@ namespace CL.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class seek1 : IMigrationMetadata
+    public sealed partial class ClientMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(seek1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ClientMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201411291756274_seek1"; }
+            get { return "201411291857364_ClientMigration"; }
         }
         
         string IMigrationMetadata.Source

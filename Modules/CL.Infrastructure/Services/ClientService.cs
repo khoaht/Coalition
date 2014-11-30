@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CL.Infrastructure.Services;
 using Domain.Entity;
+using System.Data.Entity;
 
 namespace CL.Infrastructure.Services
 {
@@ -23,10 +24,11 @@ namespace CL.Infrastructure.Services
             exp = t => (string.IsNullOrEmpty(criteria.FirstName) || t.FirstName.Contains(criteria.FirstName))
                         && (string.IsNullOrEmpty(criteria.LastName) || t.LastName.Contains(criteria.LastName))
                         && (string.IsNullOrEmpty(criteria.SurName) || t.SurName.Contains(criteria.SurName))
-                        && (string.IsNullOrEmpty(criteria.Email) || t.Email.Contains(criteria.Email));
+                        && (string.IsNullOrEmpty(criteria.Email) || t.Email.Equals(criteria.Email));
 
             var result = clientRepository.Get
-                        .Where(exp)
+                        .Include(t => t.Cards)
+                        .Where(exp)                       
                         .OrderBy(t => t.FirstName)
                         .ToList();
 

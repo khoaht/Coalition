@@ -11,27 +11,71 @@ appControllers.controller('TransactionController', ['$scope', '$http', '$locatio
 
 appControllers.controller('AddTransactionController', ['$scope', '$http', '$location', '$q',
   function ($scope, $http, $location, $q) {
-
-      //Get Cards
       $scope.cards = [];
+      $scope.ClientName = '';
+      $scope.$watch("Email", OnSearch);
+      $scope.$watch("SaleAmount", CaculatePoints);
 
-      $http({
-          method: 'GET',
-          url: '/Transaction/GetCards',
-          async: false,
-      }).success(function (data, status, headers, config) {
-          $scope.cards = data;
-      });
+      function CaculatePoints() {
+          var amount = parseInt($scope.SaleAmount);
+          $scope.CaculatedPoints = amount / 10;
 
-      //ENd
+      }
 
-      $scope.GO = function () {
-          var transactionModel = {
-              OriginalPoints: $scope.CaculatedPoints,
-              RemmainingPoints: $scope.CaculatedPoints,
-              SourceCard: null,
-              DestinationCard: $scope.CardId
-          };
+      $scope.Save = function (invalid) {
+          $scope.IsSubmitted = true;
+          if (!invalid) {
+              var trans = {
+                  OriginalPoints: $scope.CaculatedPoints,
+                  RemmainingPoints: $scope.CaculatedPoints,
+                  SourceCard: null,
+                  DestinationCard: $scope.CardId
+              };
+
+              $http({
+                  method: 'POST',
+                  url: '/Transaction/CreateTransaction',
+                  data: { trans: trans },
+                  async: false,
+              }).success(function (data, status, headers, config) {
+                  $location.path("/Transaction/List");
+              });
+          }
+      }
+
+      function LoadClientCards(clientId) {
+
+          $http({
+              method: 'POST',
+              url: '/Transaction/GetCards',
+              data: { clientId: clientId },
+              async: false,
+          }).success(function (data, status, headers, config) {
+              $scope.cards = data;
+          });
+      }
+
+      function OnSearch() {
+
+          var email = $scope.Email;
+          $http({
+              method: 'POST',
+              url: '/Transaction/GetClient',
+              data: { email: email },
+              async: false,
+          }).success(function (data, status, headers, config) {
+
+              if (data.FirstName != undefined) {
+                  $scope.ClientName = data.FirstName + ' ' + data.LastName + ' ' + data.SurName;
+                  // Load client's cards
+                  LoadClientCards(data.Id);
+              }
+
+              else {
+                  $scope.cards = [];
+                  $scope.ClientName = '';
+              }
+          });
       }
   }]);
 

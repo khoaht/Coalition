@@ -30,6 +30,18 @@ namespace CL.Infrastructure.Services
             var result = transactionRepository.Get
                         .Where(exp)
                         .OrderByDescending(t => t.DateTime)
+                        .Select(t => new Transaction()
+                        {
+                            CompanyId = t.CompanyId,
+                            DateTime = t.DateTime,
+                            DestinationCard = t.DestinationCard,
+                            Id = t.Id,
+                            OriginalPoints = t.OriginalPoints,
+                            RemmainingPoints = t.RemmainingPoints,
+                            SourceCard = t.SourceCard,
+                            SourceTransaction = t.SourceTransaction,
+                            UserId = t.UserId
+                        })
                         .ToList();
 
             return result;
@@ -42,6 +54,8 @@ namespace CL.Infrastructure.Services
 
         public Transaction Add(Transaction transaction)
         {
+            //transaction.Id = Guid.NewGuid();
+            transaction.DateTime = DateTime.Now;
             var result = transactionRepository.Add(transaction);
             transactionRepository.Commit();
             return result;

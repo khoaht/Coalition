@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CL.Infrastructure.Services;
 using Domain.Entity;
+using System.Data.Entity;
 
 namespace CL.Infrastructure.Services
 {
@@ -21,10 +22,12 @@ namespace CL.Infrastructure.Services
         {
             Func<Card, bool> exp = null;
             exp = t => (criteria.ClientId == null || t.ClientId.Equals(criteria.ClientId))
+                       && (criteria.Active == null || t.Active.Equals(criteria.Active))
                        && (string.IsNullOrEmpty(criteria.CardNumber) || t.CardNumber.Contains(criteria.CardNumber));
 
             var result = cardRepository.Get
-                        .Where(exp)
+                         .Include(t => t.Client)
+                        .Where(exp)                        
                         .OrderByDescending(t => t.CardNumber)
                         .ToList();
 

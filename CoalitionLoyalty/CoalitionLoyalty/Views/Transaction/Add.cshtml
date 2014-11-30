@@ -1,17 +1,23 @@
 ﻿
-<form role="form" id="frmAddPoint">
+<form role="form"  name="frm" novalidate>
     <div class=" form-group">
         <div class="row">
             <div class="form-group">
                 <div class="col-md-9">
                     <label for="cardOrMail">Card or mail</label>
-                    <input type="text" class="form-control" ng-model="Email" id="txtCardOrMail" placeholder="Enter card or mail">
-                    <label for="cardOrMail" ng-model="ClientName"></label>
+                    <input type="text" class="form-control" name="email" ng-model="Email" id="txtCardOrMail" placeholder="Enter card or mail">
+                    <label for="cardOrMail" ng-model="ClientName">{{ClientName}}</label>
+                    <small style="color: #ff0000">
+                        <span ng-show="IsSubmitted && frm.txtCardOrMail.$error.required">email is required.</span>
+                    </small>
                 </div>
 
                 <div class="col-md-3">
                     <label for="cards">Card</label>
-                    <select ng-model="CardId" ng-options="card.CardNumber for card in cards"></select>
+                    <select ng-model="CardId" name="CardId" ng-options="s.Id as s.CardNumber for s in cards" required></select>
+                    <small style="color: #ff0000">
+                        <span ng-show="IsSubmitted && frm.CardId.$error.required">Card is required.</span>
+                    </small>
                 </div>
             </div>
         </div>
@@ -20,8 +26,10 @@
             <div class="form-group">
                 <div class="col-md-9">
                     <label for="ticket">Ticket#</label>
-                    <input type="text" class="form-control" id="txtTicket" placeholder="Enter ticket">
-
+                    <input type="text" class="form-control" name="txtTicket" id="txtTicket" placeholder="Enter ticket" required>
+                    <small style="color: #ff0000">
+                        <span ng-show="IsSubmitted && frm.txtTicket.$error.required">Ticket is required.</span>
+                    </small>
                 </div>
 
                 <div class="col-md-3">
@@ -34,11 +42,10 @@
             <div class="form-group">
                 <div class="col-md-9">
                     <label for="saleAmount">Sale amount</label>
-                    <input type="text" class="form-control" id="txtSaleAmount">
-                </div>
-
-                <div class="col-md-3">
-
+                    <input type="number" ng-model="SaleAmount" class="form-control" id="txtSaleAmount" name="txtSaleAmount" ng-type=" number" required>
+                    <small style="color: #ff0000">
+                        <span ng-show="IsSubmitted && frm.txtSaleAmount.$error.required">Sale amount is required.</span>
+                    </small>
                 </div>
             </div>
         </div>
@@ -46,8 +53,8 @@
         <div class="row">
             <div class="form-group">
                 <div class="col-md-9">
-                    <label for="saleAmount">Points</label>
-                    <input type="text" class="form-control" id="txtPoint">
+                    <label for="txtPoint">Points</label>
+                    <input type="text" readonly class="form-control" id="txtPoint" ng-model="CaculatedPoints">
                 </div>
 
                 <div class="col-md-3">
@@ -56,5 +63,5 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-default">Go</button>
+    <button type="submit" class="btn btn-default" ng-click="Save(frm.$invalid)">Go</button>
 </form>

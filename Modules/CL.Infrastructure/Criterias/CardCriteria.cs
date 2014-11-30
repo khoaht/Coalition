@@ -12,7 +12,8 @@ namespace CL.Infrastructure.Criterias
     public class CardCriteria : Criteria
     {
         public string CardNumber { get; set; }
-
+        public bool? Active { get; set; }
+        public string Email { get; set; }
         public Guid? ClientId { get; set; }
     }
 }

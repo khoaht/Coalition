@@ -80,7 +80,7 @@ namespace CL.Infrastructure.Migrations
             client.Cards.Add(new Card() { Id = Guid.NewGuid(), CardNumber = "7797979" });
             client.Cards.Add(new Card() { Id = Guid.NewGuid(), CardNumber = "8646511" });
             var existedClient = context.Clients.Any(t => t.LastName.Equals(client.LastName));
-            //if (existed == false)
+            if (existed == false)
             {
                 context.Clients.Add(client);
                 context.SaveChanges();

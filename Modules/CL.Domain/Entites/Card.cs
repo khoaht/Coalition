@@ -14,6 +14,8 @@ namespace Domain.Entity
         [Key]
         public Guid Id { get; set; }
 
+        public bool Active { get; set; }
+
         public string CardNumber { get; set; }
 
         public Guid ClientId { get; set; }
