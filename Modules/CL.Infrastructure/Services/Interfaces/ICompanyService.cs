@@ -9,7 +9,7 @@ using Domain.Entity;
 
 namespace CL.Infrastructure.Services
 {
-    public interface ICompanyService : IService<Company, CompanyCriteria>
+    public interface ICompanyService : IService<Guid, Company, CompanyCriteria>
     {
         //TODO: Define anothers services
     }

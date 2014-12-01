@@ -32,6 +32,8 @@ namespace CoalitionLoyalty
                         "~/Scripts/angular.js",
                         "~/Scripts/angular-route.js",
                         "~/Scripts/angular-scenario.js",
+                        "~/Scripts/angular-animate.js",
+                        "~/Scripts/angular-resource.js",
                          "~/Scripts/ui-bootstrap-tpls-0.10.0.min.js"
                         ));
 

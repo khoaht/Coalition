@@ -9,7 +9,7 @@ using Domain.Entity;
 
 namespace CL.Infrastructure.Services
 {
-    public interface ITransactionService : IService<Transaction, TransactionCriteria>
+    public interface ITransactionService : IService<Guid,Transaction, TransactionCriteria>
     {
         //TODO: Define anothers services
     }

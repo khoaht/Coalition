@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CL.Infrastructure.Services;
 using Domain.Entity;
-
+using System.Data.Entity;
 namespace CL.Infrastructure.Services
 {
     public class UserService : IUserService
@@ -32,24 +32,26 @@ namespace CL.Infrastructure.Services
             return result;
         }
 
-        public User Get(Guid Id)
+        public User Get(string Id)
         {
-            return userRepository.Get.FirstOrDefault(t => t.Id.Equals(Id));
+            return userRepository.Get
+                .Include(t=>t.Company)
+                .FirstOrDefault(t => t.Id.Equals(Id));
         }
 
         public User Add(User user)
         {
-             var result = userRepository.Add(user);
+            var result = userRepository.Add(user);
             userRepository.Commit();
             return result;
         }
 
         public User Update(User user)
         {
-           return userRepository.Update(user);
+            return userRepository.Update(user);
         }
 
-        public bool Delete(Guid Id)
+        public bool Delete(string Id)
         {
             var delete = Get(Id);
             if (delete != null)

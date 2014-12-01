@@ -3,7 +3,17 @@ var appControllers = angular.module('appControllers', []);
 
 appControllers.controller('TransactionController', ['$scope', '$http', '$location',
   function ($scope, $http, $location) {
+      $scope.transactions = [];
+      // Load Transactions
+      $http({
+          method: 'GET',
+          url: '/Transaction/GetTransactions',
+          async: false,
+      }).success(function (data, status, headers, config) {
+          $scope.transactions = data;
 
+      });
+      //End
       $scope.addPoint = function () {
           $location.path("/Transaction/Add");
       }
@@ -19,11 +29,12 @@ appControllers.controller('AddTransactionController', ['$scope', '$http', '$loca
       function CaculatePoints() {
           var amount = parseInt($scope.SaleAmount);
           $scope.CaculatedPoints = amount / 10;
-
       }
+
 
       $scope.Save = function (invalid) {
           $scope.IsSubmitted = true;
+
           if (!invalid) {
               var trans = {
                   OriginalPoints: $scope.CaculatedPoints,
@@ -34,11 +45,11 @@ appControllers.controller('AddTransactionController', ['$scope', '$http', '$loca
 
               $http({
                   method: 'POST',
-                  url: '/Transaction/CreateTransaction',
+                  url: '/Transaction/Create',
                   data: { trans: trans },
                   async: false,
               }).success(function (data, status, headers, config) {
-                  $location.path("/Transaction/List");
+                  $location.path("/Transaction");
               });
           }
       }

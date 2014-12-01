@@ -34,7 +34,8 @@ namespace CL.Infrastructure.Migrations
             var company = new Company()
             {
                 Id = Guid.NewGuid(),
-                Name = "TDevs LTD"
+                Name = "TDevs LTD",
+                GiveBackPercentage = 10// 10 percent
             };
             var existed = context.Companies.Any(t => t.Name.Equals(company.Name));
             if (existed == false)

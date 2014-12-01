@@ -7,16 +7,20 @@ using CL.Infrastructure.Criterias;
 using CL.Infrastructure.Services;
 using CoalitionLoyalty.Models;
 using Domain.Entity;
+using Microsoft.AspNet.Identity;
+
 
 
 namespace CoalitionLoyalty.Controllers
 {
+    [Authorize]
     public class TransactionController : Controller
     {
         #region Fields
         private readonly ITransactionService transactionService;
         private readonly ICardService cardService;
         private readonly IClientService clientService;
+        private readonly IUserService userService;
         #endregion
 
 
@@ -24,8 +28,10 @@ namespace CoalitionLoyalty.Controllers
 
         public TransactionController(ITransactionService transactionService,
             ICardService cardService,
-            IClientService clientService)
+            IClientService clientService,
+            IUserService userService)
         {
+            this.userService = userService;
             this.transactionService = transactionService;
             this.cardService = cardService;
             this.clientService = clientService;
@@ -64,10 +70,10 @@ namespace CoalitionLoyalty.Controllers
         #region Actions
 
 
-        public JsonResult CreateTransaction(Transaction trans)
+        public JsonResult GetTransactions()
         {
-            transactionService.Add(trans);
-            return Json(true, JsonRequestBehavior.AllowGet);
+            var result = transactionService.Search(new TransactionCriteria(){ });
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetCards(Guid? clientId)
         {
@@ -91,9 +97,24 @@ namespace CoalitionLoyalty.Controllers
                     SurName = t.SurName,
                     Email = t.Email,
                     LastName = t.LastName,
-                    
+
                 }).FirstOrDefault();
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult Create(Transaction trans)
+        {
+            var userId = User.Identity.GetUserId();
+            if (!string.IsNullOrEmpty(userId))
+            {
+                var user = userService.Get(userId);
+                trans.UserId = userId;
+                trans.CompanyId = user.CompanyId;
+                var result = transactionService.Add(trans);
+                return Json(result);
+            }
+            return Json(true);
         }
         #endregion
     }

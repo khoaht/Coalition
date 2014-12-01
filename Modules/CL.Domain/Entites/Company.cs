@@ -15,6 +15,8 @@ namespace Domain.Entity
 
         public string Name { get; set; }
 
+        public int GiveBackPercentage { get; set; }
+
         public virtual ICollection<User> Users { get; set; }
     }
 }

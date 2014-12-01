@@ -73,6 +73,10 @@
     <Compile Include="Migrations\201411291935424_ClientMigration1.Designer.cs">
       <DependentUpon>201411291935424_ClientMigration1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412010334312_UpdateCompany.cs" />
+    <Compile Include="Migrations\201412010334312_UpdateCompany.Designer.cs">
+      <DependentUpon>201412010334312_UpdateCompany.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepository.cs" />
@@ -105,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411291935424_ClientMigration1.resx">
       <DependentUpon>201411291935424_ClientMigration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412010334312_UpdateCompany.resx">
+      <DependentUpon>201412010334312_UpdateCompany.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

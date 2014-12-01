@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace CL.Infrastructure.Services.Interfaces
 {
-    public interface IService<T, W>
+    public interface IService<GType, T, W>
+        //where GType : Type
         where T : class
         where W : Criteria
     {
         IList<T> Search(W criteria);
 
-        T Get(Guid Id);
+        T Get(GType Id);
 
         T Add(T transaction);
 
         T Update(T transaction);
 
-        bool Delete(Guid Id);
+        bool Delete(GType Id);
     }
 }

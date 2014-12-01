@@ -6,19 +6,15 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Date Time</th>
+            @*<th>Date Time</th>*@
             <th>Original Points</th>
             <th>Remaining Points</th>
-            <th>Source Card</th>
-            <th>Destination Card</th>
         </tr>
     </thead>
-    <tr ng-data="transaction in transactions">
-        <td ng-model="transaction.Id" />
-        <td ng-model="transaction.DateTime" />
-        <td ng-model="transaction.OriginalPoints" />
-        <td ng-model="transaction.RemainingPoints" />
-        <td ng-model="transaction.SourceCard"/>
-        <td ng-model="transaction.DestinationCard" />
+    <tr ng-repeat="trans in transactions">
+        <td>{{trans.Id}}</td>
+        @*<td>{{trans.DateTime}}</td>*@
+        <td>{{trans.OriginalPoints}}</td>
+        <td>{{trans.RemmainingPoints}}</td>
     </tr>
 </table>

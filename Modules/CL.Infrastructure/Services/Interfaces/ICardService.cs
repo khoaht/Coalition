@@ -9,7 +9,7 @@ using Domain.Entity;
 
 namespace CL.Infrastructure.Services
 {
-    public interface ICardService : IService<Card, CardCriteria>
+    public interface ICardService : IService<Guid, Card, CardCriteria>
     {
         //TODO: Define anothers services
     }
